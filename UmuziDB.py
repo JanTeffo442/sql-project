@@ -10,6 +10,9 @@ FirstName VARCHAR(50), LastName VARCHAR(50), Gender VARCHAR,
 Address VARCHAR(200), Phone VARCHAR(15), Email VARCHAR(100), City VARCHAR(20),
 Country VARCHAR(50));'''
 
-cursor.execute(create_table_query)
+create_table_employees = '''CREATE TABLE Employees(EmployeeID INT PRIMARY KEY NOT NULL,
+FirstName VARCHAR(50), LastName VARCHAR(50), Email VARCHAR(100), JobTitle VARCHAR(20));'''
+
+cursor.execute(create_table_employees)
 connection.commit()
 connection.close()
