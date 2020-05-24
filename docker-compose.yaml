@@ -1,8 +1,7 @@
-
 version: "3.3"
 services:
   postgres:
-    image: postgres:9.6
+    image: postgres:12.3
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=pass
@@ -17,5 +16,4 @@ services:
     restart: always
     ports:
       - 8080:8080
-
 
