@@ -32,14 +32,32 @@ ProductID INT REFERENCES Products(ProductID), PaymentID INT REFERENCES Payments(
 FulfilledByEmployeeID INT REFERENCES Employees(EmployeeID), DateRequired DATE, DateShipped DATE,
 Status VARCHAR(20));'''
 
+insert_query_orders = '''INSERT INTO Orders(ProductID, PaymentID, FulfilledByEmployeeID, DateRequired, DateShipped, Status)
+VALUES('1', '1', '2', '05-09-2018', NULL, 'Not shipped'),
+('1', '2', '2', '04-09-2018', '03-09-2018', 'Shipped'),
+('3', '3', '3', '06-09-2018', NULL, 'Not shipped');'''
+
 
 
 create_table_payments = '''CREATE TABLE Payments(PaymentID SERIAL PRIMARY KEY,
 CustomerID INT REFERENCES Customers(CustomerID), PaymentDate DATE, Amount DECIMAL);'''
 
+insert_query_payments = '''INSERT INTO Payments(CustomerID, PaymentDate, Amount)
+VALUES('1', '01-09-2018','150.75'),
+('5', '03-09-2018', '150.75'),
+('4','03-09-2018', '700.60');'''
+
+
+
 create_table_products = '''CREATE TABLE Products(ProductID SERIAL PRIMARY KEY,
 ProductName VARCHAR(100), Description VARCHAR(300), BuyPrice NUMERIC(6,2));'''
 
-cursor.execute(insert_query_employees)
+
+insert_query_products = '''INSERT INTO Products(ProductName, Description, BuyPrice) 
+VALUES('Harley Davidson Chopper', 'This replica features working kickstand, front suspension, gear-shift lever', '150.75'),
+('Classic Car', 'Turnable front wheels, steering function', '550.75'),
+('Sports car', 'Turnable front wheels, steering function', '700.60');'''
+
+cursor.execute(insert_query_orders)
 connection.commit()
 connection.close()
